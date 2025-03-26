@@ -1,4 +1,3 @@
-
 def get_cars_by_make(cars_list, maker):
     cars_by_make = []
     for car in cars_list:
@@ -15,7 +14,8 @@ def get_cars_by_price(cars_list, min_price, max_price):
             
     return cars_by_price
     
-
+def get_user_input() -> int:
+    user_input = input("***** Search method *****\n1. Make\n2. Price\n3. Exit\nChoose a method: ")
 
 cars_list = [
 {'maker': 'Toyota', 'model': 'Camry', 'year': 2019, 'color':
@@ -32,12 +32,27 @@ cars_list = [
 'blue', 'price': 70000}
 ]
 
-# Test Cases
-print(get_cars_by_make(cars_list, 'Tesla'))
-print(get_cars_by_price(cars_list, 20000, 50000))
-print(get_cars_by_make(cars_list, 'Ford'))
-print(get_cars_by_price(cars_list, 10000, 20000))
 
-print(get_cars_by_make(cars_list, 'Buick'))
+user_input = input("***** Search method *****\n1. Make\n2. Price\n3. Exit\nChoose a method: ")
+
+while int(user_input) != 3:
+    user_input = int(user_input)
+    if user_input == 1:
+        make = input("Enter the make of the car: ")
+        print(get_cars_by_make(cars_list, make))
+        user_input = input("***** Search method *****\n1. Make\n2. Price\n3. Exit\nChoose a method: ")
+    elif user_input == 2:
+        min_price = int(input("minimum price: "))
+        max_price = int(input("maximum price: "))
+        print(get_cars_by_price(cars_list, min_price, max_price))
+        user_input = input("***** Search method *****\n1. Make\n2. Price\n3. Exit\nChoose a method: ")
+    elif user_input == 3:
+        break
+
+    
+print("bye")
+        
+
+
 
 
